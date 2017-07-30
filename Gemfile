@@ -44,6 +44,8 @@ end
 
 gem 'thin'
 
+gem 'capybara'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
