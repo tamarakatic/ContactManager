@@ -98,7 +98,8 @@ RSpec.describe PhoneNumbersController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, {:phone_number => invalid_attributes}, valid_session
+        post :create, {:phone_number => invalid_attributes},
+        valid_session
         expect(response).to be_success
       end
     end
@@ -120,7 +121,9 @@ RSpec.describe PhoneNumbersController, type: :controller do
 
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
-        put :update, {:id => phone_number.to_param, :phone_number => new_attributes}, valid_session
+        put :update, {:id => phone_number.to_param,
+                      :phone_number => new_attributes},
+        valid_session
         phone_number.reload
         expect(phone_number.number).to eq("MyNewString")
         expect(phone_number.person_id).to eq(1)
@@ -130,7 +133,9 @@ RSpec.describe PhoneNumbersController, type: :controller do
         bob = Person.create(first_name: 'Bob', last_name: 'Jones')
         valid_attributes = { number: '555-5678', person_id: bob.id }
         phone_number = PhoneNumber.create! valid_attributes
-        put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
+        put :update, {:id => phone_number.to_param,
+                      :phone_number => valid_attributes},
+        valid_session
         expect(response).to redirect_to(bob)
       end
     end
@@ -138,7 +143,9 @@ RSpec.describe PhoneNumbersController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         phone_number = PhoneNumber.create! valid_attributes
-        put :update, {:id => phone_number.to_param, :phone_number => invalid_attributes}, valid_session
+        put :update, {:id => phone_number.to_param,
+                      :phone_number => invalid_attributes},
+        valid_session
         expect(response).to be_success
       end
     end

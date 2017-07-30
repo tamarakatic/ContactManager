@@ -19,12 +19,14 @@ describe "the person view", type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+    expect(page).to have_link('Add phone number',
+                              href: new_phone_number_path(person_id: person.id))
   end
 
   it 'has links to edit phone numbers' do
     person.phone_numbers.each do |phone|
-      expect(page).to have_link('edit', href: edit_phone_number_path(phone))
+      expect(page).to have_link('edit',
+                                href: edit_phone_number_path(phone))
     end
   end
 
